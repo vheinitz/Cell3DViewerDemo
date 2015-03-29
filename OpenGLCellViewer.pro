@@ -1,11 +1,13 @@
 
 
 HEADERS       = glwidget.h \
-    mainwindow.h
+				mainwindow.h\
+				persistence.h \
 
 SOURCES       = glwidget.cpp \
                 main.cpp \
-    mainwindow.cpp
+				persistence.cpp \
+				mainwindow.cpp
 
 QT           += opengl
 

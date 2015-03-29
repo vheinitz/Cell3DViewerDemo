@@ -16,6 +16,8 @@
 #include <QDir>
 #include <QKeyEvent>
 #include <QSizePolicy>
+#include <QFileDialog>
+#include "persistence.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,6 +25,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+	PERSISTENCE_INIT( "VHeinitz", "OpenGLCellViewer" );
+    PERSISTENT("LastImagesPath", &_lastImagesPath, this );
+	PERSISTENT("OptionNormalized", ui->actionNormalize, "checked");
+	PERSISTENT("Geometry", this, "geometry");
 
     glWidget = new GLWidget;
 	glWidget->setMinimumWidth(500);
@@ -43,7 +50,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_lvCells_activated(const QModelIndex &index)
 {
-    QString img = QString(":/")+index.data().toString();
+	QString img = index.data().toString();
+	if ( !QFileInfo(img).exists() )
+	{
+		img = QString(":/")+index.data().toString();
+	}
+	glWidget->normalize( ui->actionNormalize->isChecked() );
 	glWidget->setImage(img);
 
 
@@ -60,4 +72,19 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
 void MainWindow::on_lvCells_clicked(const QModelIndex &index)
 {
     on_lvCells_activated(index);
+}
+
+void MainWindow::on_actionNormalize_triggered()
+{
+    glWidget->normalize( ui->actionNormalize->isChecked() );
+}
+
+void MainWindow::on_actionLoad_Images_triggered()
+{
+    QStringList files = QFileDialog::getOpenFileNames( this, tr("Select Images ..."), _lastImagesPath, "*.png" );
+    if ( !files.isEmpty() )
+    {
+        _imagesModel.setStringList(files);
+		_lastImagesPath = QFileInfo(files.at(0)).path();
+    }
 }

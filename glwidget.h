@@ -30,6 +30,7 @@ public slots:
     void setYRotation(int angle);
     void setZRotation(int angle);
     void setImage (QString);
+	void normalize(bool);
 
 signals:
     void xRotationChanged(int angle);
@@ -55,6 +56,8 @@ private:
     GLuint _vertexes;
     QImage qimg;
 	QMutex _vertexesMx;
+	int _maxPixValue;
+	bool _normalize;
 };
 
 #endif

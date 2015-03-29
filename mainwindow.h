@@ -34,6 +34,10 @@ private slots:
 
     void on_lvCells_clicked(const QModelIndex &index);
 
+    void on_actionNormalize_triggered();
+
+    void on_actionLoad_Images_triggered();
+
 protected:
     void keyPressEvent(QKeyEvent *event);
 
@@ -41,6 +45,7 @@ private:
     Ui::MainWindow *ui;
     GLWidget *glWidget;
     QStringListModel _imagesModel;
+	QString _lastImagesPath;
 };
 
 #endif // MAINWINDOW_H

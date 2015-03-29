@@ -26,7 +26,9 @@ GLWidget::GLWidget(QWidget *parent)
 	xRot(1440),
 	yRot(1440),
 	zRot(0),
-	_vertexes(0)
+	_vertexes(0),
+	_maxPixValue(255),
+	_normalize(false)
 {
 
 }
@@ -77,9 +79,60 @@ void GLWidget::setZRotation(int angle)
     }
 }
 
+void GLWidget::normalize(bool n)
+{
+	_normalize = n;
+
+}
+
 void GLWidget::setImage (QString img)
 {
 	qimg = QImage(img);
+
+	if ( qimg.width() > 320 && qimg.height() > 240)
+		qimg = qimg.copy( qimg.width()/2 - 160, qimg.height()/2-120, 320, 240 );
+
+	_maxPixValue = 255;
+	if( _normalize ) 
+	{
+
+		unsigned char hist[256];
+		for(int i=0; i<=255; ++i) hist[i]=0;
+
+		
+		double area =qimg.width()*qimg.height();
+		for (int y =0; y < qimg.height(); ++y)
+		{
+			QRgb * pix = (QRgb *)qimg.scanLine(y);
+			for (int x =0; x < qimg.width(); ++x)
+			{	
+				
+				unsigned char gp= ::qGray( *(pix++) );
+				hist[gp]++;
+			}
+		}
+
+		int cntNotZero=0;
+		for (int i=255; i>=0; i--)
+		{
+			_maxPixValue = i;
+			if ( hist[i] > area*0.01 )
+			{
+				cntNotZero++;
+			}
+			else
+			{
+				cntNotZero=0;
+			}
+
+			if (cntNotZero>7)
+			{
+				_maxPixValue+=cntNotZero;
+				break;
+			}
+		}
+	}
+
 	initVertexes();
 	//paintGL();
 	update();
@@ -94,7 +147,7 @@ void GLWidget::initVertexes()
 	int width = qimg.width();
 	int height = qimg.height();
 
-	float sz = 1.0 / 100; //255; scaling images as they have very low intensity
+	float sz = 1.0 / _maxPixValue;
 	float sx=1.0 / width;
 	float sy=1.0 / height;
 	float xo = sx/2;

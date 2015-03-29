@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Valentin Heinitz 2015, OpenGL Cell Viewer, Version: 0.1, Using SNPHEp-2 images from Arnold Wiliem et al </string>
+   <string>VHeinitz 2015, OpenGL Cell Viewer, Version: 0.2, Using SNPHEp-2 images from Arnold Wiliem et al </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -47,14 +47,38 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionLoad_Images"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="actionNormalize"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuOptions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionNormalize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Normalize</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionLoad_Images">
+   <property name="text">
+    <string>Load Images ...</string>
    </property>
   </action>
  </widget>

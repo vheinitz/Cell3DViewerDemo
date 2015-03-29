@@ -4,8 +4,8 @@
 
 [Setup]
 AppName=OpenGLCellViewer
-AppVerName=OpenGLCellViewer_0.1
-OutputBaseFilename=OpenGLCellViewer_0.1
+AppVerName=OpenGLCellViewer_0.2
+OutputBaseFilename=OpenGLCellViewer_0.2
 AppPublisher=vheinitz
 AppPublisherURL=http://heinitz-it.de
 AppSupportURL=http://heinitz-it.de
