@@ -25,3 +25,6 @@ SOFTWARE.
 The demo uses SNPHEp-2 - cell images data set
   Copyright 2013 - Arnold Wiliem, Peter Hobson, Brian C. Lovell, University of Queensland, Sullivan Nicolaides Pathology. 
   contact: a.wiliem@uq.edu.au; arnold.wiliem@ieee.org
+  
+Built with VS2008 and Qt4.8.4. commercial version
+Installer builds using InnoSetup
