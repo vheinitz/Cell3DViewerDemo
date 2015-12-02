@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLCellViewer", "OpenGLCellViewer.vcproj", "{CD3242D7-5010-3895-B01B-420B763A166B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLCellViewer", "OpenGLCellViewer.vcproj", "{807E5227-B26B-3534-9D9E-91F87F287972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD3242D7-5010-3895-B01B-420B763A166B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{CD3242D7-5010-3895-B01B-420B763A166B}.Debug|Win32.Build.0 = Debug|Win32
-		{CD3242D7-5010-3895-B01B-420B763A166B}.Release|Win32.ActiveCfg = Release|Win32
-		{CD3242D7-5010-3895-B01B-420B763A166B}.Release|Win32.Build.0 = Release|Win32
+		{807E5227-B26B-3534-9D9E-91F87F287972}.Debug|Win32.ActiveCfg = Debug|Win32
+		{807E5227-B26B-3534-9D9E-91F87F287972}.Debug|Win32.Build.0 = Debug|Win32
+		{807E5227-B26B-3534-9D9E-91F87F287972}.Release|Win32.ActiveCfg = Release|Win32
+		{807E5227-B26B-3534-9D9E-91F87F287972}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

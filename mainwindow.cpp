@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	PERSISTENCE_INIT( "VHeinitz", "OpenGLCellViewer" );
     PERSISTENT("LastImagesPath", &_lastImagesPath, this );
+    PERSISTENT("_lastStorePath", &_lastStorePath, this );
+
 	PERSISTENT("OptionNormalized", ui->actionNormalize, "checked");
 	PERSISTENT("Geometry", this, "geometry");
 
@@ -87,4 +89,15 @@ void MainWindow::on_actionLoad_Images_triggered()
         _imagesModel.setStringList(files);
 		_lastImagesPath = QFileInfo(files.at(0)).path();
     }
+}
+
+void MainWindow::on_actionExport_as_image_triggered()
+{
+    QString savefile = QFileDialog::getSaveFileName( this, tr("Images File Name"), _lastStorePath, "*.png" );
+	if (!savefile.isEmpty())
+	{
+		QImage img = glWidget->grabFrameBuffer(true);
+		img.save(savefile);
+		_lastStorePath = QFileInfo(savefile).canonicalPath();
+	}
 }

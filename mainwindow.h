@@ -38,6 +38,8 @@ private slots:
 
     void on_actionLoad_Images_triggered();
 
+    void on_actionExport_as_image_triggered();
+
 protected:
     void keyPressEvent(QKeyEvent *event);
 
@@ -46,6 +48,7 @@ private:
     GLWidget *glWidget;
     QStringListModel _imagesModel;
 	QString _lastImagesPath;
+    QString _lastStorePath;
 };
 
 #endif // MAINWINDOW_H

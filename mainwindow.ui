@@ -48,6 +48,7 @@
      <string>File</string>
     </property>
     <addaction name="actionLoad_Images"/>
+    <addaction name="actionExport_as_image"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
@@ -79,6 +80,11 @@
   <action name="actionLoad_Images">
    <property name="text">
     <string>Load Images ...</string>
+   </property>
+  </action>
+  <action name="actionExport_as_image">
+   <property name="text">
+    <string>Export as image...</string>
    </property>
   </action>
  </widget>
